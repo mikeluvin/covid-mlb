@@ -1,6 +1,6 @@
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Container, Grid, List, ListItem } from '@material-ui/core';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Container, Grid } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 
 const StyledTableCell = withStyles((theme) => ({
@@ -24,16 +24,10 @@ const StyledTableRow = withStyles((theme) => ({
     },
 }))(TableRow);
 
-const useStyles = makeStyles({
-    table: {
-        //got rid of this
-    },
-});
 
 function MLBStand(props) {
 
     const { standings } = props;
-    const classes = useStyles();
 
     return standings && (
        <Container>
@@ -48,7 +42,7 @@ function MLBStand(props) {
                     <h2>{division.div_name}</h2>
                 </Grid>
                 <TableContainer component={Paper}>
-                <Table className={classes.table} aria-label="customized table">
+                <Table aria-label="customized table">
                   <TableHead>
                     <StyledTableRow>
                       <StyledTableCell>Team</StyledTableCell>

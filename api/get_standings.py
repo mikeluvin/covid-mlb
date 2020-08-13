@@ -16,7 +16,7 @@ def get_MLB_standings():
     #returns the standings sorted by division.
     #200 = AL West, 201 = AL East, 202 = AL Central, 203 = NL West, 204 = NL East, 205 = NL Centralf
     standings = statsapi.standings_data(date=d_m_y)
-    print(standings)
+    # print(standings)
     return standings
 
 # convert to a list, get rid of the division #s. Each object in the list contains:
@@ -141,25 +141,6 @@ def discrete_fant_data(sortedMLBTeams):
 #calculate the current fantasy standings, returns
 # a list with each person's name, wins, loss, and win_frac
 def calc_fant_standings(fant_data):
-    # wins_losses = []
-
-    # for i in range(len(fant_data)):
-    #     curr_teams = fant_data[i].get_teams()
-    #     wins = 0
-    #     losses = 0
-    #     for j in range(len(curr_teams)):
-    #         wins += curr_teams[j]['wins']
-    #         losses += curr_teams[j]['losses']
-
-    #     win_frac = wins / (wins + losses)
-    #     wins_losses.append( {
-    #         'name': fant_data[i].get_name(),
-    #         'wins': wins,
-    #         'losses': losses,
-    #         'win_frac': round(win_frac, 4)
-    #     })
-
-    #print(wins_losses)
     totals = []
     for team in fant_data:
         totals.append(team.get_totals())
@@ -167,11 +148,6 @@ def calc_fant_standings(fant_data):
     # get the standings by sorting by win_frac
     sorted_fant_stand = sorted(totals, key = lambda i: i['win_frac'], reverse = True)
     return sorted_fant_stand
-
-# currstand = get_MLB_standings()
-# sortedstand = sort_MLB_standings(currstand)
-# fant_info = discrete_fant_data(sortedstand)
-# fantasystandings = calc_fant_standings(fant_info)
 
 
 # now, i need to send the data over to React. I may actually need to use MongoDB to store this data?

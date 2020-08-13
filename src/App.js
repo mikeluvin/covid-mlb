@@ -1,12 +1,13 @@
 import React from 'react';
-import { Container, Grid, TextField } from '@material-ui/core';
-import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
+import { Switch, Route} from "react-router-dom";
 import Layout from "./components/Layout";
 import FantStand from "./components/FantStand";
 import FantTeams from "./components/FantTeams";
 import Home from "./components/Home";
 import MLBStand from "./components/MLBStand";
 import './App.css';
+
+const API_ENDPOINT = "https://rmu4eg6pdg.execute-api.us-east-1.amazonaws.com/prod";
 
 class App extends React.Component {
   constructor(props) {
@@ -19,11 +20,11 @@ class App extends React.Component {
   }
 
   async get_todays_standings() {
-    var response = await fetch("http://localhost:3001/getfantasystandings");
+    var response = await fetch(API_ENDPOINT + "/getfantasystandings");
 
     if (response.ok) {
       var json = await response.json();
-      console.log(json);
+      //console.log(json);
       //var standings = JSON.parse(json);
       //console.log(standings);
       this.setState({curr_standings: json});
@@ -33,11 +34,11 @@ class App extends React.Component {
   }
 
   async get_team_info() {
-    var response = await fetch("http://localhost:3001/getteaminfo");
+    var response = await fetch(API_ENDPOINT + "/getteaminfo");
 
     if (response.ok) {
       var json = await response.json();
-      console.log(json);
+      //console.log(json);
       this.setState({team_info: json});
     } else {
       alert("HTTP-Error: " + response.status);
@@ -45,11 +46,11 @@ class App extends React.Component {
   }
 
   async get_mlb_standings() {
-    var response = await fetch("http://localhost:3001/getmlbstandings");
+    var response = await fetch(API_ENDPOINT + "/getmlbstandings");
 
     if (response.ok) {
       var json = await response.json();
-      console.log(json);
+      //console.log(json);
       //var standings = JSON.parse(json);
       //console.log(standings);
       this.setState({mlb_standings: json});
@@ -73,13 +74,13 @@ class App extends React.Component {
           <Route exact path="/fantasystandings">
             <FantStand standings={this.state.curr_standings}/>
           </Route>
-          <Route path = "/mlbstandings">
+          <Route exact path = "/mlbstandings">
             <MLBStand standings={this.state.mlb_standings}/>
           </Route>
           <Route exact path="/fantasyteams">
             <FantTeams teamInfo={this.state.team_info}/>
           </Route> 
-          <Route path="/">
+          <Route exact path="/">
             <Home />
           </Route>
         </Switch> 

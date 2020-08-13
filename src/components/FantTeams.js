@@ -1,6 +1,8 @@
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Container, Grid, List, ListItem } from '@material-ui/core';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Container, Grid, List, ListItem, ListItemText } from '@material-ui/core';
+import {  withStyles } from '@material-ui/core/styles';
+//import { NavLink } from "react-router-dom";
+import '../App.css';
 
 
 const StyledTableCell = withStyles((theme) => ({
@@ -24,16 +26,10 @@ const StyledTableRow = withStyles((theme) => ({
     },
 }))(TableRow);
 
-const useStyles = makeStyles({
-    table: {
-        //got rid of this
-    },
-});
 
 function FantTeams(props) {
 
     const { teamInfo } = props;
-    const classes = useStyles();
 
     return teamInfo && (
        <Container>
@@ -43,19 +39,21 @@ function FantTeams(props) {
                 </Grid>
             <List>
                 {teamInfo.map ((team) => (
-                    <ListItem><a href={`/fantasyteams#${team.name}`}>{team.name} </a></ListItem>
+                  <a className="stubbornLink" href={`/fantasyteams#${team.name}`}>
+                    <ListItem button key={`${team.name}`}>
+                      <ListItemText primary={`${team.name}`} /> 
+                    </ListItem>
+                  </a>
                 ))}
             </List>
             <Grid item>
             {teamInfo.map((team) => (
                 <Grid item>
                 <Grid item>
-                    <a id={`${team.name}`}>
-                    <h2>{team.name}</h2>
-                    </a>
+                    <h2 id={`${team.name}`}>{team.name}</h2>
                 </Grid>
                 <TableContainer component={Paper}>
-                <Table className={classes.table} aria-label="customized table">
+                <Table aria-label="customized table">
                   <TableHead>
                     <StyledTableRow>
                       <StyledTableCell>Team</StyledTableCell>

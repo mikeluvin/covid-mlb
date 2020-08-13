@@ -3,8 +3,8 @@ import { AppBar, CssBaseline, Drawer, Hidden, IconButton,Typography, Toolbar, Di
     List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Menu,  Home, CalendarToday, People } from '@material-ui/icons';
-import { BrowserRouter as Router, Switch, Route, NavLink, Link } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
+import '../App.css';
 
 const drawerWidth = 240;
 
@@ -83,13 +83,14 @@ function Layout(props) {
         </List>
         <List>
         {["Team Collins", "Team Donofrio", "Team Ludwig", "Team Luvin", "Team McGowan", "Team Schmidt", "Team Shannon"].map ((text, index) => (
+              <a className="stubbornLink" href={`/fantasyteams#${text}`}>
                 <ListItem button key={text} 
                     className={classes.nested}
-                    component={Link}
-                    to={`/fantasyteams#${text}`}>
+                    >
                       {/*^this link just doesn't work...if i change it to a normal anchor, then it does, but otherwise no. */}
                     <ListItemText primary={text} />
                 </ListItem>
+              </a>
         ))}
         </List>
       </div>
@@ -154,7 +155,7 @@ function Layout(props) {
         {children}
       </main>
     </div>
-        );
+    );
 }
 
 export default Layout;
