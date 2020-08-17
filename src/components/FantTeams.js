@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Container, Grid, List, ListItem, ListItemText } from '@material-ui/core';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Container, Grid } from '@material-ui/core';
 import {  withStyles } from '@material-ui/core/styles';
 //import { NavLink } from "react-router-dom";
 import '../App.css';
@@ -10,7 +10,7 @@ const StyledTableCell = withStyles((theme) => ({
       backgroundColor: theme.palette.common.black,
       color: theme.palette.common.white,
       //may need to use media queries? idk, the table isn't rendering correctly on mobile.
-      fontSize: 18,
+      fontSize: 16,
       fontWeight: "bold"
     },
     body: {
@@ -33,10 +33,9 @@ function FantTeams(props) {
 
     return teamInfo && (
        <Container>
-            <Grid className="main" container direction="column" justify-content="space-evenly" alignItems="center">
-                <Grid item>
+            <Grid container direction="column" justify-content="space-evenly" alignItems="center">
+{/*               <Grid item>
                     <h1>Teams</h1>
-                </Grid>
             <List>
                 {teamInfo.map ((team) => (
                   <a className="stubbornLink" href={`/fantasyteams#${team.name}`}>
@@ -46,19 +45,18 @@ function FantTeams(props) {
                   </a>
                 ))}
             </List>
+              </Grid> */}
             <Grid item>
             {teamInfo.map((team) => (
                 <Grid item>
-                <Grid item>
                     <h2 id={`${team.name}`}>{team.name}</h2>
-                </Grid>
                 <TableContainer component={Paper}>
                 <Table aria-label="customized table">
                   <TableHead>
                     <StyledTableRow>
                       <StyledTableCell>Team</StyledTableCell>
-                      <StyledTableCell align="right">Wins</StyledTableCell>
-                      <StyledTableCell align="right">Losses</StyledTableCell>
+                      <StyledTableCell align="right">W</StyledTableCell>
+                      <StyledTableCell align="right">L</StyledTableCell>
                       <StyledTableCell align="right">Win %</StyledTableCell>
                     </StyledTableRow>
                   </TableHead>

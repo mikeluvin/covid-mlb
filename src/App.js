@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import FantStand from "./components/FantStand";
 import FantTeams from "./components/FantTeams";
@@ -7,7 +7,7 @@ import Home from "./components/Home";
 import MLBStand from "./components/MLBStand";
 import './App.css';
 
-const API_ENDPOINT = "https://rmu4eg6pdg.execute-api.us-east-1.amazonaws.com/prod";
+const API_ENDPOINT = "https://mrpuwx9zwf.execute-api.us-east-2.amazonaws.com/dev1";
 
 class App extends React.Component {
   constructor(props) {
@@ -24,10 +24,9 @@ class App extends React.Component {
 
     if (response.ok) {
       var json = await response.json();
-      //console.log(json);
-      //var standings = JSON.parse(json);
-      //console.log(standings);
-      this.setState({curr_standings: json});
+      var body = JSON.parse(json.body);
+      console.log(body);
+      this.setState({curr_standings: body});
     } else {
       alert("HTTP-Error: " + response.status);
     }
@@ -38,8 +37,9 @@ class App extends React.Component {
 
     if (response.ok) {
       var json = await response.json();
-      //console.log(json);
-      this.setState({team_info: json});
+      var body = JSON.parse(json.body);
+      console.log(body);
+      this.setState({team_info: body});
     } else {
       alert("HTTP-Error: " + response.status);
     }
@@ -50,10 +50,11 @@ class App extends React.Component {
 
     if (response.ok) {
       var json = await response.json();
-      //console.log(json);
       //var standings = JSON.parse(json);
       //console.log(standings);
-      this.setState({mlb_standings: json});
+      var body = JSON.parse(json.body);
+      console.log(body);
+      this.setState({mlb_standings: body});
     } else {
       alert("HTTP-Error: " + response.status);
     }
