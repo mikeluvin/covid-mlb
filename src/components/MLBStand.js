@@ -8,7 +8,7 @@ const StyledTableCell = withStyles((theme) => ({
       backgroundColor: theme.palette.common.black,
       color: theme.palette.common.white,
       //may need to use media queries? idk, the table isn't rendering correctly on mobile.
-      fontSize: 18,
+      fontSize: 16,
       fontWeight: "bold"
     },
     body: {
@@ -31,7 +31,7 @@ function MLBStand(props) {
 
     return standings && (
        <Container>
-            <Grid className="main" container direction="column" justify-content="space-evenly" alignItems="center">
+            <Grid container direction="column" justify-content="space-evenly" alignItems="center">
                 <Grid item>
                     <h1>MLB Standings</h1>
                 </Grid>
@@ -46,8 +46,8 @@ function MLBStand(props) {
                   <TableHead>
                     <StyledTableRow>
                       <StyledTableCell>Team</StyledTableCell>
-                      <StyledTableCell align="right">Wins</StyledTableCell>
-                      <StyledTableCell align="right">Losses</StyledTableCell>
+                      <StyledTableCell align="right">W</StyledTableCell>
+                      <StyledTableCell align="right">L</StyledTableCell>
                       <StyledTableCell align="right">GB</StyledTableCell>
                       <StyledTableCell align="right">WC Rank</StyledTableCell>
                       <StyledTableCell align="right">WCGB</StyledTableCell>
