@@ -8,7 +8,7 @@ idna-2.10.dist-info
 MLB_StatsAPI-1.0.0.dist-info
 package
 requests
-requests-2.23.0.dist-info
+requests-2.24.0.dist-info
 statsapi
 tests
 urllib3
