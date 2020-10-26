@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Layout from "./components/Layout";
 import FantStand from "./components/FantStand";
 import FantTeams from "./components/FantTeams";
@@ -84,6 +84,7 @@ class App extends React.Component {
           <Route exact path="/">
             <Home />
           </Route>
+          <Redirect from="*" to="/" />
         </Switch> 
       </Layout>
     );
