@@ -7,7 +7,8 @@ import Home from "./components/Home";
 import MLBStand from "./components/MLBStand";
 import './App.css';
 
-const API_ENDPOINT = "https://mrpuwx9zwf.execute-api.us-east-2.amazonaws.com/dev1";
+// const API_ENDPOINT = "https://mrpuwx9zwf.execute-api.us-east-2.amazonaws.com/dev1";
+const API_ENDPOINT = "http://localhost:3001";
 
 class App extends React.Component {
   constructor(props) {

@@ -11,20 +11,22 @@ app = Flask(__name__)
 def get_MLB_standings():
     #get today's date so we can get the updated standings
     today = date.today()
+    d_m_y = str(today.month) + "/" + str(today.day) + "/" + str(today.year)
+    print(d_m_y)
     month = today.month
     day = today.day
     year = today.year
-    print(year)
-    if year > 2020:
+    if year >= 2020 and month > 10:
         month = 10
         day = 15
         year = 2020
     d_m_y = str(month) + "/" + str(day) + "/" + str(year)
+    print(d_m_y)
 
     #returns the standings sorted by division.
     #200 = AL West, 201 = AL East, 202 = AL Central, 203 = NL West, 204 = NL East, 205 = NL Centralf
     standings = statsapi.standings_data(date=d_m_y)
-    # print(standings)
+    print(standings)
     return standings
 
 # convert to a list, get rid of the division #s. Each object in the list contains:
