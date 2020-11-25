@@ -3,6 +3,9 @@
   color: #000000;
 }
 
+#error-text {
+  color: red;
+}
 .App {
   text-align: center;
 }
