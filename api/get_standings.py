@@ -169,6 +169,10 @@ def calc_fant_standings(fant_data):
 def send_updated_standings():
 
     curr_stand = get_MLB_standings()
+    if not curr_stand:
+        resp = make_response("Call to MLB-StatsAPI failed", 500)
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        return resp
     sorted_stand = sort_MLB_standings(curr_stand)
     fant_info = discrete_fant_data(sorted_stand)
     fant_standings = calc_fant_standings(fant_info)
@@ -183,6 +187,10 @@ def send_updated_standings():
 @app.route('/getteaminfo', methods = ['GET'])
 def send_team_info():
     curr_stand = get_MLB_standings()
+    if not curr_stand:
+        resp = make_response("Call to MLB-StatsAPI failed", 500)
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        return resp
     sorted_stand = sort_MLB_standings(curr_stand)
     fant_info = discrete_fant_data(sorted_stand)
 
@@ -196,6 +204,10 @@ def send_team_info():
 @app.route('/getmlbstandings', methods = ['GET'])
 def send_mlb_standings():
     curr_stand = get_MLB_standings()
+    if not curr_stand:
+        resp = make_response("Call to MLB-StatsAPI failed", 500)
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        return resp
     stand_list = parse_MLB_standings(curr_stand)
     resp = make_response(json.dumps(stand_list))
     resp.headers['Access-Control-Allow-Origin'] = '*'

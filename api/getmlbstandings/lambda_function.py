@@ -24,6 +24,14 @@ def parse_MLB_standings(standings):
 
 def lambda_handler(event, context):
     curr_stand = get_MLB_standings()
+    if not curr_stand:
+        return {
+            'statusCode': 500,
+            'body': "Call to MLB-StatsAPI failed",
+            'headers': {
+            'Access-Control-Allow-Origin': '*'
+            }
+        }
     stand_list = parse_MLB_standings(curr_stand)
 
     return {
