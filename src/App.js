@@ -21,7 +21,6 @@ class App extends React.Component {
 
   async get_todays_standings() {
     var response = await fetch(API_ENDPOINT + "/getfantasystandings");
-
     if (response.ok) {
       var json = await response.json();
       var body = JSON.parse(json.body);
